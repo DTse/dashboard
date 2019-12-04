@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     },
     votes:{
         fontSize: 20,
-        fontWeight: 500
+        fontWeight: 700
     }
 }));
 
