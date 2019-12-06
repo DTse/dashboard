@@ -26,7 +26,12 @@ const useStyles = makeStyles(theme => ({
 	  justifyContent: 'flex-end',
 	},
 	content: {
+		width: '100vw',
+		height: '100vh',
+		display: 'flex',
+		alignItems: 'center',
 		flexGrow: 1,
+		flexDirection: 'column',
 		padding: theme.spacing(3),
 		transition: theme.transitions.create('margin', {
 			easing: theme.transitions.easing.sharp,
