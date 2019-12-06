@@ -1,7 +1,9 @@
-import React from 'react';
-
+/**
+   * Return the Dashboard page.
+   * @return {any}
+**/ 
 const Dashboard = () =>{
-    return 'HELLo'
+    return 'Welcome'
 }
 
 export default Dashboard;
