@@ -26,7 +26,7 @@ const Table = ({products}) =>{
     let productsTable = products.sort(sortNumbers('votes', 'desc')).map((product, key) => <TableItem key={'product-'+key} product={product}/>)
 
     return (
-        <div className={classes.root}>
+        <div data-testid="products-table" className={classes.root}>
             {productsTable}
         </div>
     )

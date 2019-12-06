@@ -1,11 +1,11 @@
-import React, { useContext,memo } from 'react';
+import React, { memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import {AppContext} from '../../store/AppContext';
+import {useAppContext} from '../../store/AppContext';
 
 import Table from './components/Table';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
 	root: {
 	  display: 'flex',
 	  alignItems: 'center',
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 **/ 
 const Products = memo(() =>{
     const classes = useStyles();
-    const { state } = useContext(AppContext);
+    const { state } = useAppContext();
 
     return (
         <div className={classes.root}>

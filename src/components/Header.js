@@ -1,6 +1,6 @@
-import React, { useContext, memo } from 'react';
+import React, { memo } from 'react';
 import clsx from 'clsx';
-import {AppContext} from '../store/AppContext';
+import {useAppContext} from '../store/AppContext';
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 **/ 
 const Header = memo(({location}) => {
     const classes = useStyles();
-    const { state, dispatch } = useContext(AppContext);
+    const { state, dispatch } = useAppContext();
 
     const title = location.pathname.replace(/\//g,'');
 

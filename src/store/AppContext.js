@@ -1,7 +1,9 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useContext } from "react";
 import {seed} from '../utils/seed';
 
-let AppContext = createContext();
+const AppContext = createContext();
+
+const useAppContext = () => useContext(AppContext);
 
 // Initial app state
 let initialState = {
@@ -56,4 +58,4 @@ const AppContextProvider = (props) => {
 **/ 
 let AppContextConsumer = AppContext.Consumer;
 
-export { AppContext, AppContextProvider, AppContextConsumer };
+export { AppContext, AppContextProvider, AppContextConsumer, useAppContext };

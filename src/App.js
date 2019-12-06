@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 
 import clsx from 'clsx';
@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Routes from './routes/Routes';
 
-import { AppContext } from './store/AppContext';
+import { useAppContext } from './store/AppContext';
 
 const drawerWidth = 240;
 
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 
 const App = () => {
   	const classes = useStyles();
-    const { state } = useContext(AppContext);
+    const { state } = useAppContext();
     return (
 		<BrowserRouter>
 			<div className={classes.root}>

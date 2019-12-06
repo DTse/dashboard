@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import {AppContext} from '../store/AppContext';
+import {useAppContext} from '../store/AppContext';
 
 const useStyles = makeStyles(theme => ({
     votes:{
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 **/ 
 const Votes = ({votes, id})=>{
     const classes = useStyles();
-    const {dispatch} = useContext(AppContext);
+    const {dispatch} = useAppContext();
     
     const handleUpvote = () =>{
         dispatch({type: 'upVote', value: id});
@@ -38,7 +38,7 @@ const Votes = ({votes, id})=>{
 
     return (
         <div className={classes.votes}>
-            <span onClick={handleUpvote}>
+            <span data-testid={`voteUP-${id}`} onClick={handleUpvote}>
                 <img 
                     alt={`Product ${id} upvote`} 
                     src={require('../assets/ui/arrow.png')}

@@ -1,4 +1,4 @@
-import React, {useContext,memo} from 'react';
+import React, {memo} from 'react';
 import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -16,7 +16,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
-import {AppContext} from '../store/AppContext';
+import {useAppContext} from '../store/AppContext';
 
 const drawerWidth = 240;
 
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 **/ 
 const Sidebar = memo(({history}) => {
     const classes = useStyles();
-    const { state, dispatch } = useContext(AppContext);
+    const { state, dispatch } = useAppContext();
 
     const handleDrawerClose = () => {
         dispatch({type: 'setOpen', value:false});
