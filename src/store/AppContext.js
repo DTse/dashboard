@@ -1,13 +1,20 @@
 import React, { createContext, useReducer } from "react";
+import {seed} from '../utils/seed';
 
 let AppContext = createContext();
 
-// Initiak app state
+// Initial app state
 let initialState = {
     open: false,
-    products: []
+    products: seed()
 };
-// useReducer returns a callback  that updates the state.
+
+/**
+   * useReducer returns a callback  that updates the state.
+   * @param {string} state
+   * @param {object} action
+   * @return {any} 
+**/ 
 let reducer = (state, action) => {
   switch (action.type) {
     case "reset":
@@ -16,15 +23,25 @@ let reducer = (state, action) => {
       return { ...state, open: action.value };
     case "setProducts":
       return { ...state, products: [...action.value] };
+    case "upVote":
+      const products = state.products.map(item => {
+          if(item.id === action.value) item.votes++;
+          return item;
+      });
+      return { ...state, products: [...products]};
     default:
       return state;
   }
 };
 
-// Context provider.
+/**
+   * Context provider.
+   * @param {object} props
+   * @return {any} 
+**/ 
 const AppContextProvider = (props) => {
-  let [state, dispatch] = useReducer(reducer, initialState);
-  let value = { state, dispatch };
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const value = {state, dispatch};
 
   return (
     <AppContext.Provider value={value}>
@@ -33,7 +50,10 @@ const AppContextProvider = (props) => {
   );
 };
 
-// Context consumer.
+/**
+   * Context consumer.
+   * @return {any} 
+**/ 
 let AppContextConsumer = AppContext.Consumer;
 
 export { AppContext, AppContextProvider, AppContextConsumer };

@@ -1,13 +1,39 @@
-import React, {memo} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import {makeStyles} from '@material-ui/core/styles';
+import {sortNumbers} from '../../../utils/sortNumbers'
 
 import TableItem from './TableItem';
 
-const Table = memo(({products}) =>{
+const useStyles = makeStyles(theme => ({
+	root: {
+	  display: 'flex',
+	  alignItems: 'center',
+      width: '100%',
+      flexDirection: 'column'
+    }
+}));
+
+/**
+   * Return the user image located in the assets folder.
+   * @param {array} products
+   * @return {any}
+**/ 
+const Table = ({products}) =>{
+    const classes = useStyles();
+
+    let productsTable = products.sort(sortNumbers('votes', 'desc')).map((product, key) => <TableItem key={'product-'+key} product={product}/>)
+
     return (
-        <div>
-            {products && products.map((product, key) => <TableItem key={'product-'+key+'-'+Math.random()} product={product}/>)}
+        <div className={classes.root}>
+            {productsTable}
         </div>
     )
-});
+};
+
+Table.propTypes = {
+    products: PropTypes.array.isRequired
+};
 
 export default Table;
