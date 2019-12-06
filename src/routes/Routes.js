@@ -4,7 +4,11 @@ import NotFound from "../pages/NotFound";
 import Dashboard from "../pages/Dashboard";
 import Products from "../pages/Products";
 
-
+/**
+   * Return the user image located in the assets folder.
+   * @param {object} props
+   * @return {any} routes
+**/ 
 const Routes = (props) => {
   return (
 	<Switch>
