@@ -1,5 +1,6 @@
 import React, {useContext,memo} from 'react';
 import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -20,23 +21,28 @@ import {AppContext} from '../store/AppContext';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  }
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        justifyContent: 'flex-end',
+        ...theme.mixins.toolbar,
+    }
 }));
 
-const Sidebar = memo((props) => {
+/**
+   * Return the Drawer Component.
+   * @param {object} history
+   * @return {any}
+**/ 
+const Sidebar = memo(({history}) => {
     const classes = useStyles();
     const { state, dispatch } = useContext(AppContext);
 
@@ -61,13 +67,13 @@ const Sidebar = memo((props) => {
             </div>
             <Divider />
             <List>
-                <ListItem button onClick={()=>props.history.push('/')}>
+                <ListItem button onClick={()=>history.push('/')}>
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItem>
-                <ListItem button onClick={()=>props.history.push('/products')}>
+                <ListItem button onClick={()=>history.push('/products')}>
                     <ListItemIcon>
                         <LocalMallIcon />
                     </ListItemIcon>
@@ -78,5 +84,9 @@ const Sidebar = memo((props) => {
     );
 });
 
+
+Sidebar.propTypes = {
+    history: PropTypes.object
+};  
 
 export default withRouter(Sidebar);

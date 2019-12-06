@@ -2,6 +2,7 @@ import React, { useContext, memo } from 'react';
 import clsx from 'clsx';
 import {AppContext} from '../store/AppContext';
 import {withRouter} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -41,11 +42,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Header = memo((props) => {
+/**
+   * Return the App Bar component.
+   * @param {object} location
+   * @return {any} img
+**/ 
+const Header = memo(({location}) => {
     const classes = useStyles();
     const { state, dispatch } = useContext(AppContext);
 
-    const title = props.location.pathname.replace(/\//g,'');
+    const title = location.pathname.replace(/\//g,'');
 
     const handleDrawerOpen = () => {
         dispatch({type: 'setOpen', value: true});
@@ -74,6 +80,12 @@ const Header = memo((props) => {
             </Toolbar>
         </AppBar>
     );
-})
+});
+
+
+Header.propTypes = {
+    location: PropTypes.object,
+};
+  
 
 export default withRouter(Header);
