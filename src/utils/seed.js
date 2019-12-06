@@ -1,7 +1,7 @@
-window.Seed = (function () {
-  function generateVoteCount() {
-    return Math.floor((Math.random() * 50) + 15);
-  }
+const seed = () => {
+    const generateVoteCount = () => {
+      return Math.floor((Math.random() * 50) + 15);
+    }
 
   const products = [
     {
@@ -10,8 +10,8 @@ window.Seed = (function () {
       description: 'On-demand sand castle construction expertise.',
       url: '#',
       votes: generateVoteCount(),
-      submitterAvatarUrl: 'assets/avatars/daniel.jpg',
-      productImageUrl: 'assets/products/image-aqua.png',
+      submitterAvatarUrl: 'daniel.jpg',
+      productImageUrl: 'image-aqua.png',
     },
     {
       id: 2,
@@ -19,8 +19,8 @@ window.Seed = (function () {
       description: 'Earn points when your favorite politicians pass legislation.',
       url: '#',
       votes: generateVoteCount(),
-      submitterAvatarUrl: 'assets/avatars/kristy.png',
-      productImageUrl: 'assets/products/image-rose.png',
+      submitterAvatarUrl: 'stevie.jpg',
+      productImageUrl: 'image-rose.png',
     },
     {
       id: 3,
@@ -28,8 +28,8 @@ window.Seed = (function () {
       description: 'We already have your measurements and shipping address.',
       url: '#',
       votes: generateVoteCount(),
-      submitterAvatarUrl: 'assets/avatars/veronika.jpg',
-      productImageUrl: 'assets/products/image-steel.png',
+      submitterAvatarUrl: 'veronika.jpg',
+      productImageUrl: 'image-steel.png',
     },
     {
       id: 4,
@@ -37,10 +37,12 @@ window.Seed = (function () {
       description: 'High-minded or absent-minded? You decide.',
       url: '#',
       votes: generateVoteCount(),
-      submitterAvatarUrl: 'assets/avatars/molly.png',
-      productImageUrl: 'assets/products/image-yellow.png',
+      submitterAvatarUrl: 'steve.jpg',
+      productImageUrl: 'image-yellow.png',
     },
   ];
 
-  return { products: products };
-}());
+  return [...products];
+};
+
+export {seed}
